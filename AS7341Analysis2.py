@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.fft import fft, fftfreq
 
 # Load the .TXT file (no headers)
-filename = '/Users/richardkanak/Desktop/PHYS523/91024Ricky5sec3.TXT'
+filename = 'Enter File Name'
 data = pd.read_csv(filename, header=None)
 
 # Time step (in seconds)
