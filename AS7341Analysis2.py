@@ -7,6 +7,9 @@ from scipy.fft import fft, fftfreq
 filename = 'Enter File Name'
 data = pd.read_csv(filename, header=None)
 
+#chad test
+
+
 # Time step (in seconds)
 time_step = 0.125  # Adjust based on your sampling period
 num_samples = len(data)
