@@ -9,9 +9,21 @@ from scipy.fft import fft, fftfreq
 # It plots a the ratio between two wavelengths at either end of the stream in an overlayed plot
 
 
-# Load the .TXT file (no headers)
-filename = '/Users/richardkanak/Downloads/Ricky 2 Sensor.txt'
-data = pd.read_csv(filename, header=None)
+# Load and clean the .TXT file (no headers)
+filename = r'c:\Users\Richard\Downloads\DATA.TXT'
+with open(filename, 'r') as file:
+    raw_data = file.readlines()
+
+# Remove 'Sensor 1:' and 'Sensor 2:' prefixes and split by commas
+clean_data = []
+for line in raw_data:
+    # Remove unwanted prefixes and leading/trailing whitespace
+    clean_line = line.replace('Sensor 1: ', '').replace('Sensor 2: ', '').strip()
+    # Split the line by commas and convert each element to a float
+    clean_data.append([float(value) for value in clean_line.split(',')])
+
+# Convert clean_data to a DataFrame
+data = pd.DataFrame(clean_data)
 
 # Time step (in seconds)
 time_step = 0.125  # Adjust based on your sampling period
